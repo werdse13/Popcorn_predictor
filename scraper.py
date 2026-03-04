@@ -35,11 +35,6 @@ def seats_counter():
             .strip()
         )
 
-        # If todays date doesn't match the date shown on the page, close instance
-      #  if page_date.upper() != page_date.upper():
-       #     browser.close()
-       #     return ["Today's listings not available."]
-
         links = page.locator(
             "#panels .whatson_panel.block a.perfButton"
         ).evaluate_all(
@@ -92,10 +87,4 @@ def seats_counter():
     else:
         messages.append("May the cinema gods have mercy on us")
 
-    for i in messages:
-        print(i)
-
     return messages
-
-
-seats_counter()
