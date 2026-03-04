@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 from datetime import datetime
 
 '''
-This is a automation script that goes the the arc cinema drogheda's website,
+This is a automation script that goes to any arc cinema locations website,
 visits each showing for today, and returns the amount of seats sold.
 It then uses an average amount of seats sold per screening to deteremine how busy it will be from the time the script is ran onwards.
 '''
@@ -22,7 +22,8 @@ def seats_counter():
         # Launch a browser page in this browser instance
         page = browser.new_page()
 
-        page.goto("https://drogheda.arccinema.ie/whatson")
+        # INSERT LINK TO DESIRED ARC CINEMAS WHATS ON PAGE
+        page.goto("https://LOCATION.arccinema .ie OR .co.uk/whatson")
 
         # wait for page to load
         page.wait_for_selector("#panels .whatson_panel.block a.perfButton")
@@ -35,9 +36,9 @@ def seats_counter():
         )
 
         # If todays date doesn't match the date shown on the page, close instance
-        if page_date.upper() != today.upper():
-            browser.close()
-            return ["Today's listings not available."]
+      #  if page_date.upper() != page_date.upper():
+       #     browser.close()
+       #     return ["Today's listings not available."]
 
         links = page.locator(
             "#panels .whatson_panel.block a.perfButton"
@@ -91,4 +92,10 @@ def seats_counter():
     else:
         messages.append("May the cinema gods have mercy on us")
 
+    for i in messages:
+        print(i)
+
     return messages
+
+
+seats_counter()
